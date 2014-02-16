@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (User.Identity.IsAuthenticated && Session["UserType"] == "User")
+{
+    <div class="jumbotron">
+        <h2>Olá!</h2>
+        <p class="lead">Bem Vindo à sua área pessoal. Sinta-se a vontade para navegar pela suas páginas personalizadas e verificar seus histórico de viagens.</p>
+        <p class="lead">Participe, vote e concorra a diversos prêmios!</p>
+
+        @Html.ActionLink("Meu Perfil", "Index", "Admin", routeValues: null, htmlAttributes: new { id = "profileLink", @class = "btn btn-lg btn-success hidden-xs" })
+
+        @Html.ActionLink("Meu Histórico", "History", "Admin", routeValues: null, htmlAttributes: new { id = "historyLink", @class = "btn btn-lg btn-success hidden-xs" })
+
+    </div>
+}
+else if (User.Identity.IsAuthenticated && Session["UserType"] == "Admin")
+     {
+    <div class="jumbotron">
+        <h2>Olá! @User.Identity.Name </h2>
+        <p class="lead">Bem Vindo à sua área de controle personalizada. </p>
+
+        @Html.ActionLink("Melhores Destinos", "TopTravels", "Admin", routeValues: null, htmlAttributes: new { id = "profileLink", @class = "btn btn-lg btn-success hidden-xs" })
+        @Html.ActionLink("Piores Destinos", "BottomTravels", "Admin", routeValues: null, htmlAttributes: new { id = "profileLink", @class = "btn btn-lg btn-danger hidden-xs" })
+
+    </div>
+
+     }
+else
+
+{
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Safari bug warning!</h2>
+            <p class="text-danger">As of v7.0.1, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a role="button" href="#" class="btn btn-primary">View details »</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a role="button" href="#" class="btn btn-primary">View details »</a></p>
+        </div>
+        <div class="col-lg-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+            <p><a role="button" href="#" class="btn btn-primary">View details »</a></p>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <img alt="500x500" data-src="holder.js/500x500/auto" class="featurette-image img-responsive" src="http://www.finantistii.ro/uploads/modules/news/2012/06/73215/studiu-pwc-venituri-cu-16-mai-mci-pentru-industria-turismului-in-ultimii-patru-ani.jpg">
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Viagens</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Novos Destinos</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>Donec id elit.</li>
+                        <li>Fusce dapibus.</li>
+                        <li>tellus ac cursus commodo</li>
+                        <li>Donec id elit.</li>
+                        <li>Fusce dapibus.</li>
+                        <li>tellus ac cursus commodo</li>
+                        <li>Fusce dapibus.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">No hora de embarcar</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>Donec id elit.</li>
+                        <li>Fusce dapibus.</li>
+                        <li>tellus ac cursus commodo</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Locais mais visitados</h3>
+                </div>
+                <div class="panel-body">
+                    <label>EUA</label>
+                    <div class="progress">
+                        <div style="width: 45%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" role="progressbar" class="progress-bar"><span class="sr-only">45% dos votos</span></div>
+                    </div>
+                    <label>França</label>
+                    <div class="progress">
+                        <div style="width: 35%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="35" role="progressbar" class="progress-bar progress-bar-success"><span class="sr-only">35% dos votos</span></div>
+                    </div>
+                    <label>Canadá</label>
+                    <div class="progress">
+                        <div style="width: 20%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info"><span class="sr-only">20% dos votos</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Atenção</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Avisos</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+    </div>
+    <hr class="featurette-divider">
+}

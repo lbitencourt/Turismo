@@ -1,0 +1,49 @@
+﻿@model List<WebSurvey.Models.TravelHistory>
+@using WebSurvey.Lib;
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Histórico de Destinos</h2>
+
+<div class="panel-group" id="accordion">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@item.IdTravelHistory">
+                        @LocationTable.ReturnName(item.IdLocation)
+                    </a>
+                </h4>
+            </div>
+            <div id="@item.IdTravelHistory" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>Você foi a este destino na data de: <b>@item.Date.ToString("dd/MM/yyyy") </b></p>
+
+                    @if (item.Satisfaction.HasValue)
+                    {
+                        <div class="rating">
+                            <p>
+                                Sua avaliação deste destino foi: 
+                                @for (int i = 0; i < item.Satisfaction; i++)
+                                {
+                                    <span class="glyphicon glyphicon-star"></span>
+                                }
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Avaliar Destino", "HistoryDetail", new { id = item.IdTravelHistory })
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

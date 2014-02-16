@@ -1,0 +1,38 @@
+﻿@model WebSurvey.Models.Client
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Seu Perfil</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="http://icons.iconarchive.com/icons/hopstarter/scrap/256/Client-icon.png" alt="Client">
+            <div class="caption">
+                <h3>@User.Identity.Name</h3>
+                <p>Nome: @Html.DisplayFor(model => model.Name)</p>
+                <p>CPF: @Html.DisplayFor(model => model.Document)</p>
+                <p>Fone: @Html.DisplayFor(model => model.Phone)</p>
+                <p>Email: @Html.DisplayFor(model => model.Mail)</p>
+                <p>
+                    @Html.ActionLink("Início", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Histórico", "History", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+﻿@model WebSurvey.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        @Html.TextBoxFor(m => m.Mail, new { @class="form-control", placeholder = "Digite seu Email" })
+    </div>
+    
+    <div class="form-group">
+        <label for="document">CPF</label>
+        @Html.TextBoxFor(m => m.Document, new { @class="form-control", placeholder = "Digite seu CPF" })
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.RememberMe)
+            Permanecer Conectado
+        </label>
+    </div>
+    <input type="submit" value="Entrar" class="btn btn-default" />
+}
+
+<div style="height:100px;">&nbsp;</div>    
